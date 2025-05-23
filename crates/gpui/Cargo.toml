@@ -12,7 +12,7 @@ license = "Apache-2.0"
 workspace = true
 
 [features]
-default = ["http_client", "font-kit", "wayland", "x11"]
+default = ["http_client", "font-kit", "wayland"]
 test-support = [
     "leak-detection",
     "collections/test-support",
@@ -20,7 +20,6 @@ test-support = [
     "util/test-support",
     "http_client?/test-support",
     "wayland",
-    "x11",
 ]
 leak-detection = ["backtrace"]
 runtime_shaders = []
@@ -51,23 +50,7 @@ wayland = [
     "open",
     "scap",
 ]
-x11 = [
-    "blade-graphics",
-    "blade-macros",
-    "blade-util",
-    "bytemuck",
-    "ashpd",
-    "cosmic-text",
-    "font-kit",
-    "as-raw-xcb-connection",
-    "x11rb",
-    "xkbcommon",
-    "xim",
-    "x11-clipboard",
-    "filedescriptor",
-    "open",
-    "scap",
-]
+
 
 
 [lib]
@@ -188,26 +171,9 @@ wayland-protocols-plasma = { version = "0.2.0", features = [
     "client",
 ], optional = true }
 
-# X11
-as-raw-xcb-connection = { version = "1", optional = true }
-x11rb = { version = "0.13.1", features = [
-    "allow-unsafe-code",
-    "xkb",
-    "randr",
-    "xinput",
-    "cursor",
-    "resource_manager",
-    "sync",
-], optional = true }
 xkbcommon = { version = "0.8.0", features = [
     "wayland",
-    "x11",
 ], optional = true }
-xim = { git = "https://github.com/XDeme1/xim-rs", rev = "d50d461764c2213655cd9cf65a0ea94c70d3c4fd", features = [
-    "x11rb-xcb",
-    "x11rb-client",
-], optional = true }
-x11-clipboard = { version = "0.9.3", optional = true }
 
 [target.'cfg(target_os = "windows")'.dependencies]
 blade-util.workspace = true
